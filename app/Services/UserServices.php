@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Traits\ApiTrait;
 use Illuminate\Http\JsonResponse;
@@ -25,37 +26,19 @@ class UserServices
     protected $user;
 
     public function getAllUsers() {
-
-        if ($this->requestType == 'API'){
-            $this->users = User::all();
-
-            if (count($this->users) == 0)
-                return $this->returnError( 'No Users Found');
-
-            return $this->returnData(
-                'Success', 'Data Returned' , $this->users
-            );
-        } else {
-            $this->users = User::simplePaginate(10);
+        $this->users = UserResource::collection(User::simplePaginate(10));
             $users = count($this->users) > 0 ? $this->users : null;
             return view('users.index' , [
-                'users' => $this->users
+                'users' => $users
             ]);
         }
-    }
+
     public function getSpecificUser($id) {
 
-        if ($this->requestType == 'API'){
-
-            $this->user = User::query()->find($id);
-
-            if (!$this->user)
+            $this->user = new UserResource(User::find($id));
+            if (! $this->user['name'])
                 return $this->returnError();
             return $this->returnData('Success' , 'Data Returned' , $this->user);
-        } else {
-            // Normal Action Here
-        }
-
     }
 
     public function updateUser($request , $user) {
@@ -108,7 +91,8 @@ class UserServices
 
         public function getMyProfile($request): JsonResponse
         {
-            return $this->returnData('Success' , 'Your Profile' , $request->user());
+            $myAcc = $request->user();
+            return $this->returnData('Success' , 'Your Profile' ,(new UserResource($myAcc)));
         }
 
 }

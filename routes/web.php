@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardPostsController;
 use App\Http\Controllers\DashboardUsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,4 +31,9 @@ Route::controller(DashboardUsersController::class)->prefix('admin/users')->group
     Route::get('/{user}' , 'edit')->name('users.edit');
     Route::put('/{user}' , 'update')->name('users.update');
     Route::delete('/{user}' , 'delete')->name('users.delete');
+});
+
+Route::controller(DashboardPostsController::class)->prefix('admin/posts')->group(function() {
+    Route::get('/' , 'index');
+    Route::delete('/{post}' , 'destroy')->name('posts.delete');
 });

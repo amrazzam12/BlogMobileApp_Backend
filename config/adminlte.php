@@ -246,6 +246,14 @@ return [
             'label_color' => 'success',
         ],
 
+        [
+            'text'        => 'Posts',
+            'url'         => 'admin/posts',
+            'icon'        => 'far fa-fw fa-file',
+            'label'       => 1,
+            'label_color' => 'success',
+        ],
+
     ],
 
     /*

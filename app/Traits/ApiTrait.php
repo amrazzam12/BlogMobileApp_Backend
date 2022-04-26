@@ -7,6 +7,12 @@ use Illuminate\Http\JsonResponse;
 trait ApiTrait{
 
 
+    public function checkRequest($apiResponse , $normalResponse){
+        return $this->requestType == 'API' ? $apiResponse : $normalResponse;
+
+    }
+
+
     public function returnError($msg = 'No Data'): JsonResponse
     {
         return response()->json([
