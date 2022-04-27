@@ -16,7 +16,8 @@ class UserResource extends JsonResource
             'email' => $this->email,
             'Joined' => $this->created_at->diffForHumans(),
             'posts' => PostResource::collection($this->posts),
-            'comments' => CommentResource::collection($this->comments)
+            'comments' => CommentResource::collection($this->comments),
+            'likes' => LikeResource::collection($this->likes)
 
 
         ];

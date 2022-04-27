@@ -16,7 +16,7 @@ class CommentResource extends JsonResource
             'post' => $this->post->id,
             'user' => $this->user->name,
             'posted' => $this->created_at->diffForHumans(),
-            'updated' => $this->updated_at->diffForHumans(),
+            'updated' => $this->updated_at,
         ];
     }
 }

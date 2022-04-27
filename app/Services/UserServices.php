@@ -71,7 +71,7 @@ class UserServices
 
     }
 
-    public function deleteUser( $user) {
+    public function deleteUser($user) {
 
 
 

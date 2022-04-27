@@ -12,7 +12,7 @@ class LikeResource extends JsonResource
         return [
             'user' => $this->user->name,
             'post' => $this->post->id,
-            'liked_at' => $this->created_at->diffForHumans()
+            'liked' => $this->created_at->diffForHumans()
         ];
     }
 }
