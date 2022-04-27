@@ -10,24 +10,24 @@ admin@admin.com
 API's ->
 
 Users ->
-    Get Current User Profile 
-    Get A User Info 
+    Get Current User Profile |
+    Get A User Info |
     Update Current User Info  
     
     
 Posts ->
-    Get Posts 
-    Get Post Details
+    Get Posts |
+    Get Post Details |
     Create - Update - Delete Posts
     
     
  Comments ->
-    Create Comment 
-    Get Post Comments
+    Create Comment |
+    Get Post Comments |
     Get User Comments
     
     
   Likes ->
-    Toggle A Like
-    Get Post Likes
+    Toggle A Like |
+    Get Post Likes |
     Get User Likes
